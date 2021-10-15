@@ -1,0 +1,55 @@
+package utils;
+
+import model.Boat;
+
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class FileHelper {
+
+
+    public List<String> getBoardSize() throws FileNotFoundException {
+        List<String> readFromFile = new ArrayList<>();
+        List<String> values = new ArrayList<>();
+        FileReader fileReader = new FileReader();
+        readFromFile = fileReader.readFile();
+
+        for (String board: readFromFile) {
+            if (board.contains("Board:")){
+                String[] splitAtLabel = board.split(":");
+                String dimension = splitAtLabel[1];
+                String[] splitAtComma = dimension.split(",");
+                String value = splitAtComma[1];
+
+                values.add(dimension);
+                values.add(value);
+
+            }
+        }
+        return values;
+    }
+
+    public List<Boat> readBoatToList() throws FileNotFoundException {
+        List<Boat> boatList = new ArrayList<>();
+        List<String> readFromFile = new ArrayList<>();
+        FileReader fileReader = new FileReader();
+        int boatID = 1;
+
+        readFromFile = fileReader.readFile();
+
+        for (String boat: readFromFile) {
+            if(boat.contains("Boat:")){
+                String[] labelSplit = boat.split(":");
+                String boatName = labelSplit[1];
+
+                String[] boatNameSplit = boatName.split(",");
+                String length = boatNameSplit[1];
+
+                boatList.add(new Boat(boatID,boatName,Integer.parseInt(length),Integer.parseInt(length)));
+                boatID++;
+            }
+        }
+        return boatList;
+    }
+}
