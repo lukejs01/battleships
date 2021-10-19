@@ -3,14 +3,17 @@ package model;
 public class Tile {
     private boolean hasShip = false;
     private boolean boatHit = false;
-    public String state = "";
+    public char state = ' ';
 
+    public Tile() {
+    }
 
-    public void renderTile(){
+    public char getState() {
+        return state;
+    }
 
-        System.out.println("---");
-        System.out.println("|" + state + "|");
-        System.out.println("---");
+    public void setState(char state) {
+        this.state = state;
     }
 
 

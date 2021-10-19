@@ -1,5 +1,5 @@
-Board:width,10
-Board:height,10
+Board:size,5
+Board:cellSize,2
 Boat:Carrier,5
 Boat:Battleship,4
 Boat:Destroyer,3

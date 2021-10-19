@@ -10,7 +10,7 @@ public class FileHelper {
 
 
     public List<String> getBoardSize() throws FileNotFoundException {
-        List<String> readFromFile = new ArrayList<>();
+        List<String> readFromFile;
         List<String> values = new ArrayList<>();
         FileReader fileReader = new FileReader();
         readFromFile = fileReader.readFile();
@@ -20,9 +20,10 @@ public class FileHelper {
                 String[] splitAtLabel = board.split(":");
                 String dimension = splitAtLabel[1];
                 String[] splitAtComma = dimension.split(",");
+                String orientation = splitAtComma[0];
                 String value = splitAtComma[1];
 
-                values.add(dimension);
+                values.add(orientation);
                 values.add(value);
 
             }
